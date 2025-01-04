@@ -25,14 +25,17 @@ body {
 }
 
 .mqm {
-    border: 1px solid pink;
     width: 23%;
     height: 23%;
 }
 
 .move_arrs{
-    border: 2px solid darkred;
+/* Добавить медиа запрос */
     height: 20%;
+    display: none;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
 }
 
 .lr{
@@ -40,23 +43,40 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    height: 23%;
+
 }
 
 
-.top{
+.top, .left, .right, .botton{
     margin: auto;
+    display: flex;
+    justify-content: center;
 }
 
-.left{
-   
+
+.arrow{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
 }
 
-.right{
-    /* margin-left: 75%; */
+.left-btn{
+    transform: rotate(-90deg);
 }
 
-.botton{
+.right-btn{
+    transform: rotate(90deg);
+}
+
+
+.botton-btn{
     margin: auto;
+    transform: rotate(180deg);
 }
 
 
