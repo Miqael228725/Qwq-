@@ -24,6 +24,43 @@ body {
     
 }
 
+.mqm {
+    border: 1px solid pink;
+    width: 23%;
+    height: 23%;
+}
+
+.move_arrs{
+    border: 2px solid darkred;
+    height: 20%;
+}
+
+.lr{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.top{
+    margin: auto;
+}
+
+.left{
+   
+}
+
+.right{
+    /* margin-left: 75%; */
+}
+
+.botton{
+    margin: auto;
+}
+
+
+
 .main{
     display: none;
     justify-content: center;
@@ -57,7 +94,7 @@ body {
 
 .figure{
     border: 2px solid white;
-    width: 8    0%;
+    width: 80%;
     height: 26%;
     margin: 20% auto;
 }
@@ -75,6 +112,9 @@ body {
 
 .next_figure{
     border: 2px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .info{
