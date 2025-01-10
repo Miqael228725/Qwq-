@@ -127,7 +127,7 @@ body {
 
 .field {
     border: 2px solid blue;
-    width: 50%;
+    /* width: 50%; */
 }
 
 .next_figure{
