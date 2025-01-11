@@ -2,7 +2,7 @@ let info = document.querySelector('.info')
 let btn_start = document.querySelector('.btn')
 let main = document.querySelector('.main')
 let field = document.querySelector('.field')
-
+let n_fig = document.querySelector('.figure')
 btn_start.addEventListener('click', function(){
     main.style.display = 'flex'
     anime({
@@ -119,19 +119,48 @@ function draw_fig(obj, val=1){
 function move_down(){
     draw_fig(cur_fig, 0)
     cur_fig.y += 1
-    draw_fig(cur_fig, 0)
-}
-if (main.style.display != 'none'){
-    setInterval(move_down, 1000*3)
+    draw_fig(cur_fig)
 }
 
 
+let next_fig = null
+
+function shapes() {
+        if (!next_fig){
+            let rn_shape = Math.floor(Math.random()*all_fig.length)
+            next_fig = all_fig[rn_shape]
+        }
+        cur_fig = {
+            shape: next_fig.shape,
+            color: next_fig.color,
+            y:0,
+            x: Math.floor(colums/2)}
+            create_fig()
+}
 
 
+function create_fig(){
+    n_fig.innerHTML = ''
+    next_fig.shape.forEach(row => {
+        let r_div = document.createElement('div')
+        r_div.style.display = 'flex'
+        row.forEach(cell => {
+            let cell_div = document.createElement('div')
+            cell_div.style.width = `${cell_size}px`
+            cell_div.style.height = `${cell_size}px`
+            cell_div.style.backgroundColor = cell ? next_fig.color : 'transparent'
+            cell_div.style.border = '1px solid darkgrey'
+            r_div.appendChild(cell_div)
+        });
+        n_fig.appendChild(r_div)
+    });
+}
 
 
-
-
-
+setInterval(move_down, 1000*3)
+    shapes()
+// if (main.style.display != 'none'){
+    
+// }
 
 
