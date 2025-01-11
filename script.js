@@ -116,6 +116,16 @@ function draw_fig(obj, val=1){
 }
 
 
+function move_down(){
+    draw_fig(cur_fig, 0)
+    cur_fig.y += 1
+    draw_fig(cur_fig, 0)
+}
+if (main.style.display != 'none'){
+    setInterval(move_down, 1000*3)
+}
+
+
 
 
 
