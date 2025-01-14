@@ -36,6 +36,17 @@ function create_field(){
         cell.style.border = '1px solid darkgrey'
         cell.style.boxSizing = 'border-box'
         field.appendChild(cell)
+        cell.classList.add('.cell')
+        let lastRow = rows[rows.length - 1];
+        let bottomCells = lastRow.querySelectorAll('.cell');
+        for (let i=0; i < bottomCells; i+=1){
+            i.style.backgroundColor = 'red'
+        }
+
+   
+
+   
+
     }
 }
 
