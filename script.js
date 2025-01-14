@@ -36,6 +36,8 @@ function create_field(){
         cell.style.border = '1px solid darkgrey'
         cell.style.boxSizing = 'border-box'
         field.appendChild(cell)
+
+// В данном отрывке кода я пытался найти последнюю строку и задать ей цвет (в последствии прозрачный) чтобы добавить коллизию, чтобы фигуры не падали в out of bounds
         cell.classList.add('.cell')
         let lastRow = rows[rows.length - 1];
         let bottomCells = lastRow.querySelectorAll('.cell');
