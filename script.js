@@ -162,5 +162,35 @@ setInterval(move_down, 1000*3)
 // if (main.style.display != 'none'){
     
 // }
+document.addEventListener('keydown', function(event){
+    if (main.style.display !== 'none' && cur_fig){
+        draw_fig(cur_fig, 0)
+        if (event.key === 'ArrowLeft'){
+            console.log(event)
+            // if (event.key === 'a' || event.key === 'ArrowLeft' || event.key === 'A' || event.key === 'ф' || event.key === 'Ф')
+            if (can_move(cur_fig, -1, 0)){
+                console.log(can_move(cur_fig, -1, 0))
+                cur_fig.x -= 1
+                
+            }
+        }
+        draw_fig(cur_fig)
+    }
+})
 
 
+
+
+function can_move(obj, obj_x, obj_y){
+    return obj.shape.every((row,i)=>{
+        return row.every((cell,j)=>{
+            if (cell){
+                let new_x = obj.x + j + obj_x
+                let new_y = obj_y + i + obj_y
+                if (new_x < 0 || new_x >= colums || new_y >= rows){
+                    return false
+                }
+                return true
+            }
+        })})
+}
