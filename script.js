@@ -26,6 +26,7 @@ for(let i=0; i < rows; i+=1){
     game_board.push(new Array(colums).fill(0))
 }
 function create_field(){
+    let cell_list = []
     field.style.display = 'grid'
     field.style.gridTemplateRows = `repeat(${rows}, ${cell_size}px)`
     field.style.gridTemplateColumns = `repeat(${colums}, ${cell_size}px)`
@@ -35,15 +36,26 @@ function create_field(){
         let cell = document.createElement('div')
         cell.style.border = '1px solid darkgrey'
         cell.style.boxSizing = 'border-box'
-        field.appendChild(cell)
+
 
 // В данном отрывке кода я пытался найти последнюю строку и задать ей цвет (в последствии прозрачный) чтобы добавить коллизию, чтобы фигуры не падали в out of bounds
         cell.classList.add('.cell')
         let lastRow = rows[rows.length - 1];
-        let bottomCells = lastRow.querySelectorAll('.cell');
-        for (let i=0; i < bottomCells; i+=1){
-            i.style.backgroundColor = 'red'
+        cell.id = `${i}`
+        cell_list.appendChild(cell)
+    let last_cell = cell_list[-1]
+    let last_row = last_cell.y
+    for (let i=0; cell_list; i+=1){
+        if (cell.y == last_row){
+            cell.style.backgroundColor = 'red'
         }
+    }
+        field.appendChild(cell)
+        // cell.forEach(q => {
+        //     if (q.y == lastRow){
+        //         q.style.backgroundColor = 'red'
+        //     }
+        // });
 
    
 
