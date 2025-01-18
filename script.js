@@ -180,6 +180,12 @@ document.addEventListener('keydown', function(event){
                 cur_fig.y += 1
             }
         }
+        if (event.key === 'w' || event.key === 'ArrowUp' || event.key === 'W' || event.key === 'ц' || event.key === 'Ц'){
+            let rotated_fig = rotate(cur_fig.shape)
+            if (can_rotate(rotated_fig, cur_fig.x, cur_fig.y)){
+                cur_fig.shape = rotated_fig
+            }
+        }
         draw_fig(cur_fig)
     }
 })
@@ -200,4 +206,30 @@ function can_move(obj, obj_x, obj_y){
             }
             return true
         })})
+}
+
+function rotate(obj){
+    let rotate_list = []
+    for (let i=0; i < obj[0].length; i+=1){
+        rotate_list[i] = []
+        for(let j=obj.length-1; j >= 0; j-=1){
+            rotate_list[i][obj.length-1-j] = obj[j][i]
+        }
+    }
+    return rotate_list
+}
+
+function can_rotate(obj, obj_x, obj_y){
+    return obj.every((row, i)=>{
+        return row.every((cell,j)=>{
+            if (cell){
+                let new_x = obj_x + j
+                let new_y = obj_y + i
+                if (new_x < 0 || new_x >= colums || new_y >= rows){
+                    return false
+                }
+            }
+            return true
+        })
+    })
 }
