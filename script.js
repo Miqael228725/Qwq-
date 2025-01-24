@@ -248,7 +248,14 @@ function can_rotate(obj, obj_x, obj_y){
 
 
 
-
+function check_full_row(){
+    for(let i=0; i < rows; i+=1){
+        if(game_board[i].every(cell=>cell===1)){
+            game_board.splice(i, 1)
+            game_board.unshift(new Array(rows).fill(0))
+        }
+    }
+}
 
 
 
@@ -264,6 +271,7 @@ function anchored(){
             }
         });
     });
+    check_full_row()
 }
 
 
