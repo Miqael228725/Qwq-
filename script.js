@@ -119,7 +119,17 @@ function draw_fig(obj, val=1){
 function move_down(){
     draw_fig(cur_fig, 0)
     cur_fig.y += 1
-    draw_fig(cur_fig)
+    if(can_move(cur_fig, 0, 1)){
+        
+        draw_fig(cur_fig)
+    }
+    else{
+        cur_fig.y -= 1
+        draw_fig(cur_fig)
+        anchored()
+        shapes()
+    }
+    
 }
 
 
@@ -135,6 +145,8 @@ function shapes() {
             color: next_fig.color,
             y:0,
             x: Math.floor(colums/2)}
+            let rn_shape = Math.floor(Math.random()*all_fig.length)
+            next_fig = all_fig[rn_shape]
             create_fig()
 }
 
@@ -233,3 +245,29 @@ function can_rotate(obj, obj_x, obj_y){
         })
     })
 }
+
+
+
+
+
+
+
+function anchored(){
+    cur_fig.shape.forEach((row, i) => {
+        row.forEach((cell, j) => {
+            if(cell){
+                let fix_x = cur_fig.x + j
+                let fix_y = cur_fig.y + i
+                if(fix_x >= 0 && fix_x < colums && fix_y >= 0 && fix_y < rows){
+                    game_board[fix_y][fix_x] = 1
+                }
+            }
+        });
+    });
+}
+
+
+
+
+
+
