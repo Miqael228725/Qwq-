@@ -42,9 +42,6 @@ function create_field(){
 create_field()
 
 
-// let cur_fig = {
-//     null
-// }
 
 let all_fig = [
     {
@@ -124,7 +121,6 @@ function move_down(){
         draw_fig(cur_fig)
     }
     else{
-        cur_fig.y -= 1
         draw_fig(cur_fig)
         anchored()
         shapes()
@@ -169,11 +165,9 @@ function create_fig(){
 }
 
 
-setInterval(move_down, 1000*3)
+setInterval(move_down, 1000)
     shapes()
-// if (main.style.display != 'none'){
-    
-// }
+
 document.addEventListener('keydown', function(event){
     if (main.style.display !== 'none' && cur_fig){
         draw_fig(cur_fig, 0)
@@ -241,6 +235,9 @@ function can_rotate(obj, obj_x, obj_y){
                 let new_x = obj_x + j
                 let new_y = obj_y + i
                 if (new_x < 0 || new_x >= colums || new_y >= rows){
+                    return false
+                }
+                if (new_y >= 0 && game_board[new_y][new_x] === 1){
                     return false
                 }
             }
