@@ -214,6 +214,9 @@ function can_move(obj, obj_x, obj_y){
                 if (new_x < 0 || new_x >= colums || new_y >= rows){
                     return false
                 }
+                if (new_y >= 0 && game_board[new_y][new_x] === 1){
+                    return false
+                }
                 
             }
             return true
