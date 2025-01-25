@@ -27,7 +27,9 @@ btn_start.addEventListener('click', function(){
 let rows = 30
 let colums = 20
 let cell_size = 30
-let game_board = []
+let game_board = [] //new Array(rows).fill(null).map(()=> {
+//     new Array(colums).fill(0)
+// })
 for(let i=0; i < rows; i+=1){
     game_board.push(new Array(colums).fill(0))
 }
@@ -43,6 +45,7 @@ function create_field(){
         cell.style.boxSizing = 'border-box'
         field.appendChild(cell)
     }
+    console.log("длина field'a",field.children.length)
 }
 
 create_field()
@@ -129,6 +132,7 @@ function move_down(){
         draw_fig(cur_fig)
         anchored()
         shapes()
+        update()
     }
     
 }
@@ -261,11 +265,24 @@ function check_full_row(){
     for(let i=0; i < rows; i+=1){
         if(game_board[i].every(cell=>cell===1)){
             game_board.splice(i, 1)
-            game_board.unshift(new Array(rows).fill(0))
+            game_board.unshift(new Array(colums).fill(0))
+        }
+    }
+    update()
+}
+function update(){
+    for (let i=0; i< rows; i+=1){
+        for(let j=0; i< colums; j+=1){
+            let index = i * colums + j
+            let element_cell = field.children[index]
+            console.log(`game board ${game_board[i][j]}`)
+            console.log('index', index)
+            console.log('element cell', element_cell)
+            // element_cell.style.backgroundColor = ['', 'lightred'][game_board[i][j] === 1 ? 1 : 0]
+            element_cell.style.backgroundColor = game_board[i][j] === 1 ? "lightred" : ''
         }
     }
 }
-
 
 
 
