@@ -4,9 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="./style.css" rel="stylesheet">
+    <script defer src="./script.js"> </script>
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=LOn4hfXcZk6y&format=png&color=000000" type="image/x-icon"> 
+    <title>Tetris </title>
 </head>
 <body>
-    
+    <!-- <h1> TETRIS </h1> -->
+    <div class="info">
+        <h1 class="q1"> Tetris beta </h1>
+        <p> Данный проект сделан в целях обучить людей играть в тетрис </p>
+        <button class="btn"> Войти в игру </button>
+        <p> </p>
+    </div>
+    <div class="main">
+        <div class="score_field q"> 
+            <div class="score">
+                <div class="score_sum"></div>
+                <div class="streak"></div>
+            </div>
+        </div>
+        <div class="field q "> </div>
+        <div class="next_figure q"> 
+            <div class="figure"> </div>
+            <div class="move_arrs">
+                <div class="top mqm">
+                    <button class="scketch-btn top arrow">
+                        <span>
+                            <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z"/></svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="lr">
+                    <div class="left mqm ">
+                        <button class="left-btn left arrow">
+                            <span>
+                                <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z"/></svg>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="right mqm " >
+                        <button class="right-btn right arrow">
+                            <span>
+                                <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z"/></svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="botton mqm">
+                    <button class="botton-btn botton arrow">
+                        <span>
+                            <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z"/></svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+         
+
+    </div>
 </body>
+<script src='https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js'></script>
 </html>
+
+
