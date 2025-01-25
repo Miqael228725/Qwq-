@@ -3,6 +3,10 @@ let btn_start = document.querySelector('.btn')
 let main = document.querySelector('.main')
 let field = document.querySelector('.field')
 let n_fig = document.querySelector('.figure')
+let score = document.querySelector('.score_sum')
+let streak = document.querySelector('.streak')
+let score_count = 0
+score.textContent = `Score: 0`
 let is_start = false
 let is_end = 0
 btn_start.addEventListener('click', function(){
@@ -257,8 +261,10 @@ function check_full_row(){
     for(let i=0; i < rows; i+=1){
         if(game_board[i].every(cell=>cell===1)){
             game_board.splice(i, 1)
+            score_count += 100
             game_board.unshift(new Array(colums).fill(0))
             update()
+            update_score()
         }
     }
     
@@ -289,6 +295,8 @@ function anchored(){
         });
     });
     check_full_row()
+    score_count += 50
+    update_score()
     if_game_end()
     update()
 }
@@ -306,4 +314,6 @@ function if_game_end(){
 
 
 
-
+function update_score(){
+    score.textContent = `Score: ${score_count}`
+}

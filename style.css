@@ -101,6 +101,7 @@ body {
 
 .score{
     border: 2px solid white;
+    color: white;
     width: 70%;
     height: 20%;
     margin: 20% auto;
@@ -108,6 +109,7 @@ body {
 
 .streak, .score_sum{
     border: 2px solid purple;
+    color: white;
     height: 48%;
 }
 
