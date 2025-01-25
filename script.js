@@ -3,8 +3,11 @@ let btn_start = document.querySelector('.btn')
 let main = document.querySelector('.main')
 let field = document.querySelector('.field')
 let n_fig = document.querySelector('.figure')
+let is_start = false
+let is_end = 0
 btn_start.addEventListener('click', function(){
     main.style.display = 'flex'
+    is_start = true
     anime({
         targets: '.info',
         translateY: '610px',
@@ -12,7 +15,10 @@ btn_start.addEventListener('click', function(){
         easing: 'linear'
     }).finished.then(function(){
        info.style.display = 'none' 
-       
+       if (is_start && !is_end){
+        gameinterval = setInterval(move_down, 1000)
+        shapes()
+    }
        
     })
 
@@ -115,9 +121,8 @@ function draw_fig(obj, val=1){
 
 function move_down(){
     draw_fig(cur_fig, 0)
-    cur_fig.y += 1
     if(can_move(cur_fig, 0, 1)){
-        
+        cur_fig.y += 1
         draw_fig(cur_fig)
     }
     else{
@@ -164,12 +169,14 @@ function create_fig(){
     });
 }
 
+// if (main.style.display != 'none'){
+//     setInterval(move_down, 1000)
+//     shapes()
+// }
 
-setInterval(move_down, 1000)
-    shapes()
 
 document.addEventListener('keydown', function(event){
-    if (main.style.display !== 'none' && cur_fig){
+    if (main.style.display != 'none' && cur_fig){
         draw_fig(cur_fig, 0)
         if (event.key === 'a' || event.key === 'ArrowLeft' || event.key === 'A' || event.key === 'ф' || event.key === 'Ф'){
             if (can_move(cur_fig, -1, 0)){
@@ -248,6 +255,8 @@ function can_rotate(obj, obj_x, obj_y){
 
 
 
+
+
 function check_full_row(){
     for(let i=0; i < rows; i+=1){
         if(game_board[i].every(cell=>cell===1)){
@@ -256,6 +265,7 @@ function check_full_row(){
         }
     }
 }
+
 
 
 
@@ -272,8 +282,18 @@ function anchored(){
         });
     });
     check_full_row()
+    if_game_end()
 }
 
+
+function if_game_end(){
+    if(game_board[0].some(cell=> cell === 1)){
+        is_end = 1
+        clearInterval(gameinterval)
+        alert('Game over')
+        window.location.reload()
+    }
+}
 
 
 
