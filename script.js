@@ -6,7 +6,10 @@ let n_fig = document.querySelector('.figure')
 let score = document.querySelector('.score_sum')
 let streak = document.querySelector('.streak')
 let score_count = 0
+let streak_himself = 1
 score.textContent = `Score: 0`
+streak.textContent = `Streak: X1`
+let streak_count = 1
 let is_start = false
 let is_end = 0
 btn_start.addEventListener('click', function(){
@@ -59,49 +62,49 @@ let all_fig = [
             [1,1,1,1]
         ],
         color: 'purple'
-    },
-    {
-        shape: [
-            [1,1,1],
-            [0,0,1]
-        ],
-        color: 'blue'
-    },
-    {
-        shape: [
-            [0,1,0],
-            [1,1,1]
-        ],
-        color: 'red'
-    },
-    {
-        shape: [
-            [0,0,1],
-            [1,1,1]
-        ],
-        color: 'pink'
-    },
-    {
-        shape: [
-            [1,1],
-            [1,1]
-        ],
-        color: 'magenta'
-    },
-    {
-        shape: [
-            [0,1,1],
-            [1,1,0]
-        ],
-        color: 'cyan'
-    },
-    {
-        shape: [
-            [1,1,0],
-            [0,1,1]
-        ],
-        color: 'orange'
-    }
+    }//,
+    // {
+    //     shape: [
+    //         [1,1,1],
+    //         [0,0,1]
+    //     ],
+    //     color: 'blue'
+    // },
+    // {
+    //     shape: [
+    //         [0,1,0],
+    //         [1,1,1]
+    //     ],
+    //     color: 'red'
+    // },
+    // {
+    //     shape: [
+    //         [0,0,1],
+    //         [1,1,1]
+    //     ],
+    //     color: 'pink'
+    // },
+    // {
+    //     shape: [
+    //         [1,1],
+    //         [1,1]
+    //     ],
+    //     color: 'magenta'
+    // },
+    // {
+    //     shape: [
+    //         [0,1,1],
+    //         [1,1,0]
+    //     ],
+    //     color: 'cyan'
+    // },
+    // {
+    //     shape: [
+    //         [1,1,0],
+    //         [0,1,1]
+    //     ],
+    //     color: 'orange'
+    // }
 ]
 
 let cur_fig = null
@@ -261,7 +264,10 @@ function check_full_row(){
     for(let i=0; i < rows; i+=1){
         if(game_board[i].every(cell=>cell===1)){
             game_board.splice(i, 1)
-            score_count += 100
+            streak_count = 5
+            streak_himself += 1
+            streak.textContent = `Streak: X${streak_himself}`
+            score_count += 100 * streak_himself
             game_board.unshift(new Array(colums).fill(0))
             update()
             update_score()
@@ -295,7 +301,21 @@ function anchored(){
         });
     });
     check_full_row()
-    score_count += 50
+    if(streak_count > 1){
+        streak_count -= 1
+    }
+    else if(streak_count = 1 && streak_himself > 1){
+        streak_count = 2
+        streak_himself -= 1
+        streak.textContent = `Streak: X${streak_himself}`
+    }
+    else{
+        streak_himself = 1
+        streak_count = 1
+        streak.textContent = `Streak: X${streak_himself}`
+    }
+    
+    score_count += 50 * streak_himself
     update_score()
     if_game_end()
     update()
